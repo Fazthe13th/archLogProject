@@ -8,32 +8,42 @@ router.get('/',async (req,res, next)=>
     var perPage = 10
     var page = req.query.page || 1
     let search_query = {};
-    if (typeof req.query.source_ip != 'undefined' || typeof req.query.NAT_ip != 'undefined' || typeof req.query.destination_ip != 'undefined' || typeof req.query.month != 'undefined' || typeof req.query.day != 'undefined'){
+    if (typeof req.query.source_ip != 'undefined' || typeof req.query.NAT_ip != 'undefined' || typeof req.query.destination_ip != 'undefined' || typeof req.query.month != 'undefined' || typeof req.query.day != 'undefined' || typeof req.query.port != 'undefined'){
         if (req.query.source_ip != '')
         {
-            search_query['source_ip'] = req.query.source_ip;
+            search_query['source_ip'] = req.query.source_ip.trim();
         }
         if (req.query.NAT_ip != '')
         {
-            search_query['NAT_ip'] = req.query.NAT_ip;
+            search_query['NAT_ip'] = req.query.NAT_ip.trim();
         }
         if (req.query.destination_ip != '')
         {
-            search_query['destination_ip'] = req.query.destination_ip;
+            search_query['destination_ip'] = req.query.destination_ip.trim();
         }
         if (req.query.month != '')
         {
-            search_query['month'] = req.query.month;
+            search_query['month'] = req.query.month.trim();
         }
         if (req.query.day != '')
         {
-            search_query['day'] = req.query.day;
+            search_query['day'] = req.query.day.trim();
         }
+        if (req.query.source_ip_port != '')
+        {
+            search_query['source_ip_port'] = req.query.source_ip_port.trim();
+        }
+        if (req.query.NAT_ip_port != '')
+        {
+            search_query['NAT_ip_port'] = req.query.NAT_ip_port.trim();
+        }
+        if (req.query.destination_ip_port != '')
+        {
+            search_query['destination_ip_port'] = req.query.destination_ip_port.trim();
+        }
+        
     }
-    else
-    {
-        search_quer = {}
-    }
+    
     await Logs
         .find(search_query)
         .skip((perPage * page) - perPage)
@@ -49,7 +59,10 @@ router.get('/',async (req,res, next)=>
                     NAT_ip: search_query['NAT_ip'],
                     destination_ip: search_query['destination_ip'],
                     month: search_query['month'],
-                    day:search_query['day']
+                    day:search_query['day'],
+                    source_ip_port: search_query['source_ip_port'],
+                    NAT_ip_port: search_query['NAT_ip_port'],
+                    destination_ip_port: search_query['destination_ip_port']
                 })
             })
         })

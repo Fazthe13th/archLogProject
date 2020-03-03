@@ -1,76 +1,90 @@
 <%- include('../partials/functions') %>
+
 <h1 class="mt-4">Dashboard</h1>
 <div class="d-flex justify-content-center"></div>
-<form action="/dashboard/" method="GET">
+<form action="/" method="GET">
     <legend>Select Search Options</legend>
     <div class="form-row align-items-center">
       <div class="col-auto">
         <label for="sourceIP">Source IP</label>
-        <input type="text" name="source_ip" class="form-control mb-2" id="source_ip" placeholder="Source IP">
+        <input type="text" name="source_ip" class="form-control mb-2" id="source_ip" placeholder="Source IP" value="<%= typeof source_ip != 'undefined'? source_ip:null%>">
       </div>
       <div class="col-auto">
         <label for="netIP">NAT IP</label>
-        <input type="text" name="NAT_ip" class="form-control mb-2" id="NAT_ip" placeholder="NAT IP">
+        <input type="text" name="NAT_ip" class="form-control mb-2" id="NAT_ip" placeholder="NAT IP" value="<%= typeof NAT_ip != 'undefined'? NAT_ip:''%>">
       </div>
 
       <div class="col-auto">
         <label for="destinationIP">Destination IP</label>
-        <input type="text" name="destination_ip" class="form-control mb-2" id="destination_ip" placeholder="destination IP">
+        <input type="text" name="destination_ip" class="form-control mb-2" id="destination_ip" placeholder="destination IP" value="<%= typeof destination_ip != 'undefined'? destination_ip:''%>">
+      </div>
+      <div class="col-auto">
+        <label for="source_ip_port">Source IP Port</label>
+        <input type="text" name="source_ip_port" class="form-control mb-2" id="source_ip_port" placeholder="Source IP Port" value="<%= typeof source_ip_port != 'undefined'? source_ip_port:''%>">
+      </div>
+      <div class="col-auto">
+        <label for="NAT_ip_port">NAT IP Port</label>
+        <input type="text" name="NAT_ip_port" class="form-control mb-2" id="NAT_ip_port" placeholder="NAT IP Port" value="<%= typeof NAT_ip_port != 'undefined'? NAT_ip_port:''%>">
+      </div>
+      <div class="col-auto">
+        <label for="destination_ip_port">Destination IP Port</label>
+        <input type="text" name="destination_ip_port" class="form-control mb-2" id="destination_ip_port" placeholder="Destination IP Port" value="<%= typeof destination_ip_port != 'undefined'? destination_ip_port:''%>">
       </div>
       <div class="col-auto form-group">
         <label for="month">Select Month</label>
         <select class="form-control" id="month" name="month">
-          <option value="" selected>Not Selected</option>
-          <option value="Jan">January</option>
-          <option value="Feb">February</option>
-          <option value="Mar">March</option>
-          <option value="Apr">April</option>
-          <option value="May">May</option>
-          <option value="Jun">June</option>
-          <option value="Jul">July</option>
-          <option value="Aug">August</option>
-          <option value="Sep">September</option>
-          <option value="Oct">October</option>
-          <option value="Nov">November</option>
-          <option value="Dec">December</option>
+          <option value="">Any Month</option>
+          <option value="Jan" <%= typeof month != 'undefined' && month == 'Jan' ? 'selected':''%>>January</option>
+          <option value="Feb" <%= typeof month != 'undefined' && month == 'Feb' ? 'selected':''%>>February</option>
+          <option value="Mar" <%= typeof month != 'undefined' && month == 'Mar' ? 'selected':''%>>March</option>
+          <option value="Apr" <%= typeof month != 'undefined' && month == 'Apr' ? 'selected':''%>>April</option>
+          <option value="May" <%= typeof month != 'undefined' && month == 'May' ? 'selected':''%>>May</option>
+          <option value="Jun" <%= typeof month != 'undefined' && month == 'Jun' ? 'selected':''%>>June</option>
+          <option value="Jul" <%= typeof month != 'undefined' && month == 'Jul' ? 'selected':''%>>July</option>
+          <option value="Aug" <%= typeof month != 'undefined' && month == 'Aug' ? 'selected':''%>>August</option>
+          <option value="Sep" <%= typeof month != 'undefined' && month == 'Sep' ? 'selected':''%>>September</option>
+          <option value="Oct" <%= typeof month != 'undefined' && month == 'Oct' ? 'selected':''%>>October</option>
+          <option value="Nov" <%= typeof month != 'undefined' && month == 'Nov' ? 'selected':''%>>November</option>
+          <option value="Dec" <%= typeof month != 'undefined' && month == 'Dec' ? 'selected':''%>>December</option>
         </select>
       </div>
       <div class="col-auto form-group">
         <label for="day">Select Day</label>
         <select class="form-control" id="day" name="day">
-          <option value="" selected>Not Selected</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-          <option value="13">13</option>
-          <option value="14">14</option>
-          <option value="15">15</option>
-          <option value="16">16</option>
-          <option value="17">17</option>
-          <option value="18">18</option>
-          <option value="19">19</option>
-          <option value="20">20</option>
-          <option value="21">21</option>
-          <option value="22">22</option>
-          <option value="23">23</option>
-          <option value="24">24</option>
-          <option value="25">25</option>
-          <option value="26">26</option>
-          <option value="27">27</option>
-          <option value="28">28</option>
-          <option value="29">29</option>
-          <option value="30">30</option>
-          <option value="31">31</option>
+          <option value="">Any Day</option>
+          <option value="1" <%= typeof day != 'undefined' && day == '1' ? 'selected':''%>>1</option>
+          <option value="2" <%= typeof day != 'undefined' && day == '2'? 'selected':'' %>>2</option>
+          <option value="3" <%= typeof day != 'undefined' && day == '3'? 'selected':'' %>>3</option>
+          <option value="4" <%= typeof day != 'undefined' && day == '4'? 'selected':'' %>>4</option>
+          <option value="5" <%= typeof day != 'undefined' && day == '5'? 'selected':'' %>>5</option>
+          <option value="6" <%= typeof day != 'undefined' && day == '6'? 'selected':'' %>>6</option>
+          <option value="7" <%= typeof day != 'undefined' && day == '7'? 'selected':'' %>>7</option>
+          <option value="8" <%= typeof day != 'undefined' && day == '8'? 'selected':'' %>>8</option>
+          <option value="9" <%= typeof day != 'undefined' && day == '9'? 'selected':'' %>>9</option>
+          <option value="10" <%= typeof day != 'undefined' && day == '10'? 'selected':'' %>>10</option>
+          <option value="11" <%= typeof day != 'undefined' && day == '11'? 'selected':'' %>>11</option>
+          <option value="12" <%= typeof day != 'undefined' && day == '12'? 'selected':'' %>>12</option>
+          <option value="13" <%= typeof day != 'undefined' && day == '13'? 'selected':'' %>>13</option>
+          <option value="14" <%= typeof day != 'undefined' && day == '14'? 'selected':'' %>>14</option>
+          <option value="15" <%= typeof day != 'undefined' && day == '15'? 'selected':'' %>>15</option>
+          <option value="16" <%= typeof day != 'undefined' && day == '16'? 'selected':'' %>>16</option>
+          <option value="17" <%= typeof day != 'undefined' && day == '17'? 'selected':'' %>>17</option>
+          <option value="18" <%= typeof day != 'undefined' && day == '18'? 'selected':'' %>>18</option>
+          <option value="19" <%= typeof day != 'undefined' && day == '19'? 'selected':'' %>>19</option>
+          <option value="20" <%= typeof day != 'undefined' && day == '20'? 'selected':'' %>>20</option>
+          <option value="21" <%= typeof day != 'undefined' && day == '21'? 'selected':'' %>>21</option>
+          <option value="22" <%= typeof day != 'undefined' && day == '22'? 'selected':'' %>>22</option>
+          <option value="23" <%= typeof day != 'undefined' && day == '23'? 'selected':'' %>>23</option>
+          <option value="24" <%= typeof day != 'undefined' && day == '24'? 'selected':'' %>>24</option>
+          <option value="25" <%= typeof day != 'undefined' && day == '25'? 'selected':'' %>>25</option>
+          <option value="26" <%= typeof day != 'undefined' && day == '26'? 'selected':'' %>>26</option>
+          <option value="27" <%= typeof day != 'undefined' && day == '27'? 'selected':'' %>>27</option>
+          <option value="28" <%= typeof day != 'undefined' && day == '28'? 'selected':'' %>>28</option>
+          <option value="29" <%= typeof day != 'undefined' && day == '29'? 'selected':'' %>>29</option>
+          <option value="30" <%= typeof day != 'undefined' && day == '30'? 'selected':'' %>>30</option>
+          <option value="31" <%= typeof day != 'undefined' && day == '31'? 'selected':'' %>>31</option>
         </select>
+        
       </div>
       <div class="col-auto">
         <button type="submit" class="btn btn-primary mb-2">Submit</button>
@@ -85,21 +99,21 @@
 <div class="container">
   <legend>Logs</legend>
   <% if (typeof logs != 'undefined' && check_object_empty(logs) == false) { %>
-<table class="">
+<table class="table-bordered">
     <thead>
       <tr class="table-primary">
-        <th scope="col">Date</th>
-        <th scope="col">Time</th>
-        <th scope="col">Pop Name</th>
-        <th scope="col">Source</th>
-        <th scope="col">Mac</th>
-        <th scope="col">Protocal</th>
-        <th scope="col">Source IP</th>
-        <th scope="col">Source Port</th>
-        <th scope="col">Nat IP</th>
-        <th scope="col">Nat Port</th>
-        <th scope="col">Destination IP</th>
-        <th scope="col">Destination Port</th>
+        <th class="text-center" scope="col">Date</th>
+        <th class="text-center" scope="col">Time</th>
+        <th class="text-center" scope="col">Pop Name</th>
+        <th class="text-center" scope="col">Source</th>
+        <th class="text-center" scope="col">Mac</th>
+        <th class="text-center" scope="col">Protocal</th>
+        <th class="text-center" scope="col">Source IP</th>
+        <th class="text-center" scope="col">Source Port</th>
+        <th class="text-center" scope="col">Nat IP</th>
+        <th class="text-center" scope="col">Nat Port</th>
+        <th class="text-center" scope="col">Destination IP</th>
+        <th class="text-center" scope="col">Destination Port</th>
       </tr>
     </thead>
     
@@ -107,18 +121,18 @@
      
         <% logs.forEach(log => { %>
       <tr class="table-light">
-          <td><%= log.month + ' ' + log.day %> </td>
-          <td><%= log.time %></td>
-          <td><%= log.pop_name %></td>
-          <td><%= log.source %></td>
-          <td><%= log.mac %></td>
-          <td><%= log.protocal %></td>
-          <td><%= log.source_ip %></td>
-          <td><%= log.source_ip_port %></td>
-          <td><%= log.NAT_ip %></td>
-          <td><%= log.NAT_ip_port %></td>
-          <td><%= log.destination_ip %></td>
-          <td><%= log.destination_ip_port %></td>
+          <td class="text-center"><%= log.month + ' ' + log.day %> </td>
+          <td class="text-center"><%= log.time %></td>
+          <td class="text-center"><%= log.pop_name %></td>
+          <td class="text-center"><%= log.source %></td>
+          <td class="text-center"><%= log.mac %></td>
+          <td class="text-center"><%= log.protocal %></td>
+          <td class="text-center"><%= log.source_ip %></td>
+          <td class="text-center"><%= log.source_ip_port %></td>
+          <td class="text-center"><%= log.NAT_ip %></td>
+          <td class="text-center"><%= log.NAT_ip_port %></td>
+          <td class="text-center"><%= log.destination_ip %></td>
+          <td class="text-center"><%= log.destination_ip_port %></td>
       </tr>
       <% }) %>
       

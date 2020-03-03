@@ -101,7 +101,7 @@ class parser:
             log_to_hash = json.dumps(log_to_hash, sort_keys = True).encode("utf-8")
             genetrate_id = hashlib.md5(log_to_hash).hexdigest()
             log = {
-                "_id": genetrate_id,
+                
                 "month": month_day_split[0],
                 "day": month_day_split[1],
                 "time": time.group().strip(),

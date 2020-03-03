@@ -20,8 +20,8 @@ app.use('/public', express.static('public'));
 app.use(express.urlencoded({extended: false}));
 //Routes
 // app.use('/', require('./routes/index'));
-app.use('/', require('./routes/users'));
-app.use('/dashboard/', require('./routes/dashboard'));
+app.use('/', require('./routes/dashboard'));
+// app.use('/dashboard/', require('./routes/dashboard'));
 
 const PORT = process.env.PORT || 5000;
 
